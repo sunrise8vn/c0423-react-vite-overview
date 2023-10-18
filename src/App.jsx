@@ -3,13 +3,15 @@ import CountColor from './components/CountColor';
 import ChatRoom from './components/ChatRoom';
 import UseEffectWithDependencies from './components/UseEffectWithDependencies';
 import UseContentComponent from './features/UseContextComponent';
+import UseRefComponent from './features/UseRefComponent';
 
 function App() {
   return (
     <>
       {/* <CountColor /> */}
       {/* <UseEffectWithDependencies /> */}
-      <UseContentComponent />
+      {/* <UseContentComponent /> */}
+      <UseRefComponent />
     </>
   );
 }

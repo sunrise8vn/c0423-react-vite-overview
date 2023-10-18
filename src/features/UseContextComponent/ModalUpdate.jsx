@@ -40,6 +40,7 @@ const ModalUpdate = ({ modalIsOpen, closeModal, data, changeData }) => {
   return (
     <Modal
       isOpen={modalIsOpen}
+      shouldCloseOnOverlayClick={false}
       onRequestClose={closeModal}
       onAfterClose={handleAfterClose}
       style={customStyles}

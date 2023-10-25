@@ -1,4 +1,8 @@
-import './App.css';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { Route, Routes } from 'react-router-dom';
+
+// import './App.css';
 import CountColor from './components/CountColor';
 import ChatRoom from './components/ChatRoom';
 import UseEffectWithDependencies from './components/UseEffectWithDependencies';
@@ -8,13 +12,12 @@ import { createContext, useState } from 'react';
 import Red from './features/UseContextComponent/Red';
 
 import Music from './features/music';
-
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { Route, Routes } from 'react-router-dom';
 import AddMusic from './features/music/AddMusic';
 import EditMusic from './features/music/EditMusic';
 import PlayMusic from './features/music/PlayMusic';
+
+import Customer from './features/customer';
+import AddCustomer from './features/customer/AddCustomer';
 
 export const AppContext = createContext();
 
@@ -39,10 +42,13 @@ function App() {
 
       <Provider store={store}>
         <Routes>
-          <Route path="" element={<Music />}></Route>
-          <Route path="music/add" element={<AddMusic />}></Route>
-          <Route path="music/edit/:songId" element={<EditMusic />}></Route>
-          <Route path="music/watch" element={<PlayMusic />}></Route>
+          <Route path="music" element={<Music />} />
+          <Route path="music/add" element={<AddMusic />} />
+          <Route path="music/edit/:songId" element={<EditMusic />} />
+          <Route path="music/watch" element={<PlayMusic />} />
+
+          <Route path="customers" element={<Customer />} />
+          <Route path="customers/add" element={<AddCustomer />} />
         </Routes>
       </Provider>
     </>

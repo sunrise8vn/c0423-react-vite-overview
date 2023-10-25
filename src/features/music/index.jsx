@@ -45,7 +45,12 @@ const Index = () => {
     <div className="container">
       <header>
         {/* <button onClick={handleClickAddMusic}>Add new music</button> */}
-        <Link to="/music/add">Add new</Link>
+        <Link to="/music/add">
+          <button className="btn btn-light">Add new music</button>
+        </Link>
+        <Link to="/customers">
+          <button className="btn btn-light">List of customers</button>
+        </Link>
       </header>
       {/* <div>
         <button onClick={handleDecrement}>Decrement</button>
@@ -53,40 +58,44 @@ const Index = () => {
         <button onClick={handleIncrement}>Increment</button>
       </div> */}
 
-      <table
-        className="table table-hover"
-        style={{
-          width: '100%',
-        }}
-      >
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Singer</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {musicData.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.title}</td>
-              <td>{item.singer.fullName}</td>
-              <td>
-                <Link to={`/music/edit/${item.id}`}>
-                  <button className="btn btn-outline-secondary me-2">
-                    Edit
-                  </button>
-                </Link>
-                <Link to={`/music/watch?v=${item.youtubeId}`}>
-                  <button className="btn btn-outline-success ms-2">Play</button>
-                </Link>
-              </td>
+      <div className="content d-flex" style={{ justifyContent: 'center' }}>
+        <table
+          className="table table-hover"
+          style={{
+            width: '100%',
+          }}
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Singer</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {musicData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.title}</td>
+                <td>{item.singer.fullName}</td>
+                <td>
+                  <Link to={`/music/edit/${item.id}`}>
+                    <button className="btn btn-outline-secondary me-2">
+                      Edit
+                    </button>
+                  </Link>
+                  <Link to={`/music/watch?v=${item.youtubeId}`}>
+                    <button className="btn btn-outline-success ms-2">
+                      Play
+                    </button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

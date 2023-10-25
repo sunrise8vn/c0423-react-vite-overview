@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { SONG_API } from '../constants/global';
 
-export const muiscService = {
+export const musicService = {
   getAll: () => {
     return axios.get(SONG_API + '?_sort=id&_order=desc');
   },

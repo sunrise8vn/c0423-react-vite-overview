@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { muiscService } from '../services/musicService';
+import { musicService } from '../services/musicService';
 
 export const fetchAllMusic = createAsyncThunk(
   'music/fetchAllMusic',
   async () => {
-    const response = await muiscService.getAll();
+    const response = await musicService.getAll();
     return response.data;
   }
 );
@@ -13,7 +13,7 @@ export const fetchAllMusic = createAsyncThunk(
 export const fetchSongById = createAsyncThunk(
   'music/fetchSongById',
   async (id) => {
-    const response = await muiscService.getSongById(id);
+    const response = await musicService.getSongById(id);
     return response.data;
   }
 );
@@ -21,13 +21,13 @@ export const fetchSongById = createAsyncThunk(
 export const createNewSong = createAsyncThunk(
   'music/createNewSong',
   async (data) => {
-    const response = await muiscService.create(data);
+    const response = await musicService.create(data);
     return response.data;
   }
 );
 
 export const updateSong = createAsyncThunk('music/updateSong', async (data) => {
-  const response = await muiscService.update(data);
+  const response = await musicService.update(data);
   return response.data;
 });
 

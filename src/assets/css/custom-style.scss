@@ -1,6 +1,11 @@
 header {
-    background-color: #86cae7;
-    padding: 15px 5px;
+    background-color: #299be4;
+    padding: 15px 10px;
     display: flex;
+    justify-content: space-between;
     gap: 10px;
+
+    h2 {
+        color: #fff;
+    }
 }

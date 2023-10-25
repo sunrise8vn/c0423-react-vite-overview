@@ -79,6 +79,7 @@ const AddCustomer = () => {
   return (
     <div className="container">
       <header>
+        <h2>Create customer</h2>
         <Link to="/customers">
           <button className="btn btn-light">List of customers</button>
         </Link>

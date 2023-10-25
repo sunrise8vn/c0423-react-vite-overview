@@ -54,7 +54,6 @@ export const customerSlice = createSlice({
     },
     changeLocationRegion: (state, action) => {
       const { name, value, text } = action.payload;
-      console.log({ name, value, text });
       const keyId = name + 'Id';
       const keyName = name + 'Name';
 

@@ -44,13 +44,15 @@ const Index = () => {
   return (
     <div className="container">
       <header>
-        {/* <button onClick={handleClickAddMusic}>Add new music</button> */}
-        <Link to="/music/add">
-          <button className="btn btn-light">Add new music</button>
-        </Link>
-        <Link to="/customers">
-          <button className="btn btn-light">List of customers</button>
-        </Link>
+        <h2>List of music</h2>
+        <div>
+          <Link to="/music/add">
+            <button className="btn btn-light me-3">Add new music</button>
+          </Link>
+          <Link to="/customers">
+            <button className="btn btn-light">List of customers</button>
+          </Link>
+        </div>
       </header>
       {/* <div>
         <button onClick={handleDecrement}>Decrement</button>

@@ -44,7 +44,10 @@ const EditMusic = () => {
   return (
     <div className="container">
       <header>
-        <Link to="/">List of music</Link>
+        <h2>Update music</h2>
+        <Link to="/music">
+          <button className="btn btn-light">List of music</button>
+        </Link>
       </header>
       <div className="row mb-3">
         <div className="col-lg-6">

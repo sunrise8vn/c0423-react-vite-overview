@@ -15,12 +15,15 @@ const Index = () => {
   return (
     <div className="container">
       <header>
-        <Link to="/customers/add">
-          <button className="btn btn-light">Add new customer</button>
-        </Link>
-        <Link to="/music">
-          <button className="btn btn-light">List of music</button>
-        </Link>
+        <h2>List of customers</h2>
+        <div>
+          <Link to="/customers/add">
+            <button className="btn btn-light me-3">Add new customer</button>
+          </Link>
+          <Link to="/music">
+            <button className="btn btn-light">List of music</button>
+          </Link>
+        </div>
       </header>
 
       <div className="content">

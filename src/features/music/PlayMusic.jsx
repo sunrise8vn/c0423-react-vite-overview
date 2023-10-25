@@ -18,14 +18,19 @@ const PlayMusic = () => {
   return (
     <div className="container">
       <header>
-        <Link to="/">List of music</Link>
+        <h2>Play music</h2>
+        <Link to="/music">
+          <button className="btn btn-light">List of music</button>
+        </Link>
       </header>
 
-      <YouTube
-        videoId={youtubeid} // defaults -> ''
-        opts={opts} // defaults -> {}
-        // onReady={func} // defaults -> noop
-      />
+      <div className="content d-flex pt-5" style={{ justifyContent: 'center' }}>
+        <YouTube
+          videoId={youtubeid} // defaults -> ''
+          opts={opts} // defaults -> {}
+          // onReady={func} // defaults -> noop
+        />
+      </div>
     </div>
   );
 };

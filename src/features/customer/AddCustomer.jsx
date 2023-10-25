@@ -86,9 +86,11 @@ const AddCustomer = () => {
       </header>
 
       <div className="content">
-        <div className="row mb-3">
+        <div className="row mt-3 mb-3">
           <div className="col-lg-4">
-            <label htmlFor="">FullName</label>
+            <label className="fw-bold" htmlFor="">
+              FullName
+            </label>
             <input
               className="form-control"
               name="fullName"
@@ -97,7 +99,9 @@ const AddCustomer = () => {
             />
           </div>
           <div className="col-lg-4">
-            <label htmlFor="">Email</label>
+            <label className="fw-bold" htmlFor="">
+              Email
+            </label>
             <input
               type="email"
               className="form-control"
@@ -107,7 +111,9 @@ const AddCustomer = () => {
             />
           </div>
           <div className="col-lg-4">
-            <label htmlFor="">Phone</label>
+            <label className="fw-bold" htmlFor="">
+              Phone
+            </label>
             <input
               type="tel"
               className="form-control"
@@ -119,7 +125,9 @@ const AddCustomer = () => {
         </div>
         <div className="row mb-3">
           <div className="col-lg-4">
-            <label htmlFor="">Province</label>
+            <label className="fw-bold" htmlFor="">
+              Province
+            </label>
             <select
               className="form-control"
               name="province"
@@ -138,7 +146,9 @@ const AddCustomer = () => {
             </select>
           </div>
           <div className="col-lg-4">
-            <label htmlFor="">District</label>
+            <label className="fw-bold" htmlFor="">
+              District
+            </label>
             <select
               className="form-control"
               name="district"
@@ -157,7 +167,9 @@ const AddCustomer = () => {
             </select>
           </div>
           <div className="col-lg-4">
-            <label htmlFor="">Ward</label>
+            <label className="fw-bold" htmlFor="">
+              Ward
+            </label>
             <select
               className="form-control"
               name="ward"
@@ -175,7 +187,9 @@ const AddCustomer = () => {
         </div>
         <div className="row mb-3">
           <div className="col-lg-12">
-            <label htmlFor="">Address</label>
+            <label className="fw-bold" htmlFor="">
+              Address
+            </label>
             <input
               type="text"
               className="form-control"

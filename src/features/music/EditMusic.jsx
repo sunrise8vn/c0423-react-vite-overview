@@ -49,9 +49,11 @@ const EditMusic = () => {
           <button className="btn btn-light">List of music</button>
         </Link>
       </header>
-      <div className="row mb-3">
+      <div className="row mt-3 mb-3">
         <div className="col-lg-6">
-          <label htmlFor="">Title</label>
+          <label className="fw-bold" htmlFor="">
+            Title
+          </label>
           <input
             type="text"
             className="form-control"
@@ -61,7 +63,9 @@ const EditMusic = () => {
           />
         </div>
         <div className="col-lg-6">
-          <label htmlFor="">Youtube ID</label>
+          <label className="fw-bold" htmlFor="">
+            Youtube ID
+          </label>
           <input
             type="text"
             className="form-control"
@@ -73,7 +77,9 @@ const EditMusic = () => {
       </div>
       <div className="row mb-3">
         <div className="col-lg-6">
-          <label htmlFor="">Singer Full Name</label>
+          <label className="fw-bold" htmlFor="">
+            Singer Full Name
+          </label>
           <input
             type="text"
             className="form-control"
@@ -83,7 +89,9 @@ const EditMusic = () => {
           />
         </div>
         <div className="col-lg-6">
-          <label htmlFor="">Author</label>
+          <label className="fw-bold" htmlFor="">
+            Author
+          </label>
           <input
             type="text"
             className="form-control"

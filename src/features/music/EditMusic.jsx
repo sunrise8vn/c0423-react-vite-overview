@@ -8,7 +8,6 @@ const EditMusic = () => {
   const dispatch = useDispatch();
 
   const { songId } = useParams();
-  console.log(songId);
 
   const song = useSelector((state) => state.music.song);
 

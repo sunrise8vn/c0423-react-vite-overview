@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import {
   changeCurrentCustomer,
   changeLocationRegion,
   changeLocationRegionAddress,
-  createCustomer,
   fetchAllDistricts,
   fetchAllProvinces,
   fetchAllWards,
+  fetchCustomerById,
 } from '../../redux/customerSlice';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddCustomer = () => {
+const EditCustomer = () => {
   const dispatch = useDispatch();
+
+  const { customerId } = useParams();
 
   const currentCustomer = useSelector(
     (state) => state.customer.currentCustomer
@@ -71,40 +73,33 @@ const AddCustomer = () => {
     dispatch(action);
   };
 
-  const handleClickAdd = () => {
-    // console.log(currentCustomer);
-    // console.log(currentLocationRegion);
-
-    const newCustomer = {
-      ...currentCustomer,
-      locationRegion: currentLocationRegion,
-    };
-    // newCustomer.locationRegion = currentLocationRegion;
-
-    const action = createCustomer(newCustomer);
-    dispatch(action)
-      .unwrap()
-      .then(() => {
-        toast.success('Created successfully!');
-      });
-  };
+  const handleClickUpdate = () => {};
 
   useEffect(() => {
-    const action = fetchAllProvinces();
-    dispatch(action)
+    const action = fetchCustomerById(customerId);
+    dispatch(action);
+
+    dispatch(fetchAllProvinces())
       .unwrap()
-      .then((data) => {
-        const provinceId = data.results[0].province_id;
-        const action = fetchAllDistricts(provinceId);
-        dispatch(action)
-          .unwrap()
-          .then((data) => {
-            const districtId = data.results[0].district_id;
-            const action = fetchAllWards(districtId);
-            dispatch(action);
-          });
+      .then(() => {
+        console.log(currentLocationRegion.provinceId);
+        const action = fetchAllDistricts(currentLocationRegion.provinceId);
+        dispatch(action);
       });
-  }, []);
+
+    //   .unwrap()
+    //   .then((data) => {
+    //     const provinceId = data.results[0].province_id;
+    //     const action = fetchAllDistricts(provinceId);
+    //     dispatch(action)
+    //       .unwrap()
+    //       .then((data) => {
+    //         const districtId = data.results[0].district_id;
+    //         const action = fetchAllWards(districtId);
+    //         dispatch(action);
+    //       });
+    //   });
+  }, [customerId]);
 
   return (
     <div className="container">
@@ -125,7 +120,7 @@ const AddCustomer = () => {
               type="text"
               className="form-control"
               name="fullName"
-              //   value={song.title}
+              value={currentCustomer.fullName}
               onChange={handleChangeCurrentCustomer}
             />
           </div>
@@ -137,7 +132,7 @@ const AddCustomer = () => {
               type="email"
               className="form-control"
               name="email"
-              //   value={song.youtubeId}
+              value={currentCustomer.email}
               onChange={handleChangeCurrentCustomer}
             />
           </div>
@@ -149,7 +144,7 @@ const AddCustomer = () => {
               type="tel"
               className="form-control"
               name="phone"
-              //   value={song.singerFullName}
+              value={currentCustomer.phone}
               onChange={handleChangeCurrentCustomer}
             />
           </div>
@@ -162,6 +157,7 @@ const AddCustomer = () => {
             <select
               className="form-control"
               name="province"
+              value={currentLocationRegion.provinceId}
               onChange={(e) => {
                 handleChangeProvince(e);
                 handleChangeLocationRegion(e);
@@ -225,7 +221,6 @@ const AddCustomer = () => {
               type="text"
               className="form-control"
               name="address"
-              value={currentLocationRegion.address || ''}
               onChange={handleChangeLocationRegionAddress}
             />
           </div>
@@ -234,9 +229,9 @@ const AddCustomer = () => {
           <div className="col-lg-3">
             <button
               className="btn btn-outline-primary"
-              onClick={handleClickAdd}
+              onClick={handleClickUpdate}
             >
-              Add new
+              Update
             </button>
           </div>
         </div>
@@ -245,4 +240,4 @@ const AddCustomer = () => {
   );
 };
 
-export default AddCustomer;
+export default EditCustomer;

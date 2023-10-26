@@ -2,6 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { changeSong, createNewSong } from '../../redux/musicSlice';
 
 const AddMusic = () => {
@@ -26,7 +29,11 @@ const AddMusic = () => {
     };
 
     const action = createNewSong(obj);
-    dispatch(action);
+    dispatch(action)
+      .unwrap()
+      .then(() => {
+        toast.success('Created successfully!');
+      });
   };
 
   return (

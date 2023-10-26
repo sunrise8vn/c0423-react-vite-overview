@@ -10,10 +10,19 @@ export const fetchAllCustomers = createAsyncThunk(
   }
 );
 
+export const fetchCustomerById = createAsyncThunk(
+  'customer/fetchCustomerById',
+  async (customerId) => {
+    const response = await customerService.getCustomerById(customerId);
+    return response.data;
+  }
+);
+
 export const fetchAllProvinces = createAsyncThunk(
   'customer/fetchAllProvinces',
   async () => {
     const response = await customerService.getAllProvinces();
+    console.log(currentLocationRegion);
     return response.data;
   }
 );
@@ -21,6 +30,7 @@ export const fetchAllProvinces = createAsyncThunk(
 export const fetchAllDistricts = createAsyncThunk(
   'customer/fetchAllDistricts',
   async (provinceId) => {
+    console.log('provinceId: ', provinceId);
     const response = await customerService.getAllDistricts(provinceId);
     return response.data;
   }
@@ -30,6 +40,14 @@ export const fetchAllWards = createAsyncThunk(
   'customer/fetchAllWards',
   async (districtId) => {
     const response = await customerService.getAllWards(districtId);
+    return response.data;
+  }
+);
+
+export const createCustomer = createAsyncThunk(
+  'customer/createCustomer',
+  async (obj) => {
+    const response = await customerService.create(obj);
     return response.data;
   }
 );
@@ -68,14 +86,35 @@ export const customerSlice = createSlice({
     builder.addCase(fetchAllCustomers.fulfilled, (state, action) => {
       state.data = action.payload;
     });
+    builder.addCase(fetchCustomerById.fulfilled, (state, action) => {
+      state.currentCustomer = action.payload;
+      state.currentLocationRegion = action.payload.locationRegion;
+    });
     builder.addCase(fetchAllProvinces.fulfilled, (state, action) => {
       state.locationRegion.provinces = action.payload.results;
+
+      state.currentLocationRegion.provinceId =
+        action.payload.results[0].province_id;
+      state.currentLocationRegion.provinceName =
+        action.payload.results[0].province_name;
     });
     builder.addCase(fetchAllDistricts.fulfilled, (state, action) => {
       state.locationRegion.districts = action.payload.results;
+
+      state.currentLocationRegion.districtId =
+        action.payload.results[0].district_id;
+      state.currentLocationRegion.districtName =
+        action.payload.results[0].district_name;
     });
     builder.addCase(fetchAllWards.fulfilled, (state, action) => {
       state.locationRegion.wards = action.payload.results;
+
+      state.currentLocationRegion.wardId = action.payload.results[0].ward_id;
+      state.currentLocationRegion.wardName =
+        action.payload.results[0].ward_name;
+    });
+    builder.addCase(createCustomer.fulfilled, (state, action) => {
+      // state.locationRegion.wards = action.payload.results;
     });
   },
 });

@@ -18,6 +18,7 @@ import PlayMusic from './features/music/PlayMusic';
 
 import Customer from './features/customer';
 import AddCustomer from './features/customer/AddCustomer';
+import EditCustomer from './features/customer/EditCustomer';
 
 export const AppContext = createContext();
 
@@ -49,6 +50,7 @@ function App() {
 
           <Route path="customers" element={<Customer />} />
           <Route path="customers/add" element={<AddCustomer />} />
+          <Route path="customers/edit/:customerId" element={<EditCustomer />} />
         </Routes>
       </Provider>
     </>

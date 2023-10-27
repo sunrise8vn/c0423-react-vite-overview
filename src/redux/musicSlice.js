@@ -37,12 +37,10 @@ export const musicSlice = createSlice({
     data: [],
     song: {
       title: '',
-      // singer: {
-      //   fullName: '',
-      // },
       singerFullName: '',
       youtubeId: '',
       author: '',
+      avatar: null,
     },
     quantity: 1000,
     score: ['Thư Lê'],
@@ -53,6 +51,10 @@ export const musicSlice = createSlice({
       const key = Object.keys(obj);
       const value = obj[key];
 
+      state.song[key] = value;
+    },
+    changeAvatar: (state, { payload }) => {
+      const { key, value } = payload;
       state.song[key] = value;
     },
     changeQuantity: (state, action) => {
@@ -98,6 +100,7 @@ export const musicSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   changeSong,
+  changeAvatar,
   changeQuantity,
   increment,
   decrement,

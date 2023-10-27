@@ -70,6 +70,7 @@ const Index = () => {
           <thead>
             <tr>
               <th>ID</th>
+              <th>Avatar</th>
               <th>Title</th>
               <th>Singer</th>
               <th>Action</th>
@@ -79,6 +80,9 @@ const Index = () => {
             {musicData.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
+                <td>
+                  <img src={item.avatar} alt="" width="80px" height="50px" />
+                </td>
                 <td>{item.title}</td>
                 <td>{item.singer.fullName}</td>
                 <td>
